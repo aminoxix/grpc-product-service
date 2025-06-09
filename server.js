@@ -41,7 +41,7 @@ function updateProduct(call, callback){
 
     const productIndex = products.findIndex(product => product.id === productInfo.id);
 
-    if(!productIndex){
+    if(productIndex == -1){
         callback({
             code: grpc.status.NOT_FOUND,
             details: "Could not find a product with the specified ID to update"
@@ -66,7 +66,7 @@ function updateProduct(call, callback){
 function deleteProduct(call, callback){
     const productId = call.request.id;
     const productIndex = products.findIndex(product => product.id === productId);
-    if(!productIndex){
+    if(productIndex == -1){
         callback({
             code: grpc.status.NOT_FOUND,
             details: "Could not find a product with the specified ID to delete"
